@@ -1,0 +1,174 @@
+<!-- Implementando css no django 2: Precisamos carregar o css no programa para chama-lo posteriormente no código-->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Luiz Eduardo Fagundes Gattass</title>
+  <!--Implementando css 1: Aqui adicionaremos de onde o static será retirado, no caso será {% static 'css/home_page.css' %}. Depois siga para settings e verifique se o arquivo está configurado de maneira adequada-->
+  <link href="{% static 'home.css' %}" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+  <!--Criando o título da página utilizando o padrão pré definido: 
+  <h>(número da versão escolhida)-->
+  <h1>Luiz Eduardo Fagundes Gattass</h1>
+  <h2>Meus carros favoritos</h2>
+  <h3>Conteúdo da página:</h3>
+  <!--Explicação do conteúdo da página-->
+  <p>Essa página busca contar um pouco sobre carros que possuo um forte apelo emocional. <span
+      style="color: blueviolet">Estes estão ordenados em ordem cronológica de acordo com sua data de lançamento.Também
+      teremos duas listas para mostrar quais foram os veículos selecionados e qual deles é o mais forte(hp).</p></span>
+
+
+
+  
+  <!--Criando uma lista não ordenada:
+<ul> cria a lista e <li> para seus elementos-->
+  <h3>Meus carros favoritos</h3>
+<ul>
+{% for mcf in MCF %}
+  <li>
+    {{mcf.marca}} {{mcf.modelo}} {{mcf.ano}}
+    <a href="/mcf/update/{{ mcf.id }}">Atualizar</a>
+    <a href="/mcf/delete/{{ mcf.id }}">Deletar</a>
+  </li>
+{% endfor %}
+</ul>
+<a href='/mcf'>Adicionar novo carro</a> 
+
+  
+<!-- <ul>
+    <li>Mazda MX5 1994 </li>
+    <li>Mazda MX5 2008 </li>
+    <li>Maserati Quattroporte 2008</li>
+    <li>Mini Cooper John Cooper Works 2008</li>
+  </ul>-->
+
+  
+  <!--Criando uma lista ordenada-->
+ 
+  <h3>Ranking de qual possui mais cavalos de potência.</h3>
+
+  <ol>
+  {% for rcv in RCV %}
+  <li>
+    {{rcv.marca}} {{rcv.modelo}} {{rcv.ano}} {{rcv.potencia}} {{rcv.cv}}   
+    <a href="/rcv/update/{{rcv.id}}">Atualizar</a> 
+    <a href="/rcv/delete/{{rcv.id}}">Deletar</a>
+  </li>
+  {% endfor %}
+  </ol>
+  <a href='/rcv'>Adicionar novo carro</a>
+  
+<!--  <ol>
+    <li>Maserati Quattroporte 2008 400 cv</li>
+    <li>Mini Cooper John Cooper Works 2008 211 cv</li>
+    <li>Mazda MX5 2008 128 cv</li>
+    <li>Mazda MX5 1994 116 cv</li>
+  </ol>-->
+  <!--Penelope-->
+  <div><strong>1.Mazda MX5 1994 <u>Miata</u></strong></div>
+
+  <div><b>Nickname (<i>Penelope</i>)</b></div>
+  <div class="blue-center">
+    <img
+      src="https://assets.carandclassic.com/uploads/cars/mazda/C1616018/1995-mazda-mx-5-64c4460b89a4d.jpg?ar=16%3A9&auto=&fit=crop&h=450&ixlib=php-4.1.0&q=75&w=900&s=048e6fcb6c975d1aef2a05145c292f3a"
+      width="600">
+  </div>
+
+  <p>Apesar de não ser o famoso mazda Rx7 carro muito conhecido pela sua presença no filme Velozes e Furiosos, o miata
+    <b>não</b> é um carro que possa ignorar. Ao longo dos anos o Miata ganhou alguns prêmios. Ele é um conversivel leve
+    e baixo. Assim, pelo menos no Brasil devido as ruas muito acidentadas e cheias de quebra molas os donos desses
+    carros decidiram instalar chapas de metal em seu inferior para evitar possiveis danos causados pelos quebra molas.
+  </p>
+
+  <!--P2-->
+  <div><strong>2.Mazda MX5 2008 <u>Miata</u></strong></div>
+  <div><b>Nickname (<i>P2</i>)</b></div>
+
+  <div class="blue-center">
+    <img
+      src="https://media.ed.edmunds-media.com/mazda/mx-5-miata/2008/oem/2008_mazda_mx-5-miata_convertible_grand-touring_fq_oem_3_1600.jpg"
+      width=600>
+  </div>
+  <p>Assim como sua versão de 94 o Miata segue seu desing permanecendo um conversivel duas portas. Porém diferentemente
+    do modelo apresentado anteriormente ele foi feito a partir do chassis do RX7, com isso, ele acabou se tornando um
+    dos modelos mais pesadas do miata. Para mais informações sobre os miatas acesse:<a
+      href="https://www.youtube.com/watch?v=uewtKBN2_Cc" target=blank> Video sobre o miata 1994</a> ou então o link
+    bruto do video em questão<a href="https://www.youtube.com/watch?v=uewtKBN2_Cc" target=blank>
+      https://www.youtube.com/watch?v=uewtKBN2_Cc</a>.</p>
+
+  <!--Adidas-->
+  <div><strong>Mini Cooper John Cooper Works 2008</strong></div>
+
+  <div><b>Nickname(<i>Adidas</i>)</b></div>
+
+  <div class="blue-center">
+    <img src="https://cdn.motor1.com/images/mgl/RGn3m/s1/mini-60th-anniversary-edition.jpg" width=600>
+  </div>
+
+  <p>O modelo da empresa Mini Cooper apresenta apenas duas portas e tem uma tendência a sair com a traseira com
+    facilidade caso o condutor queira. Além disso ele possui algumas costumisações disponiveis como a adição de listras
+    em sua pintura assim como a adição de um painel de led. Apesar de seu nome ele comporta de maneira confortavel 4
+    pessoas de porte pequeno / medio.</p>
+
+  <!--Baloteli-->
+
+  <div><strong>Maserati Quattroporte 2008</strong></div>
+  <div><b>Nickname(<i>Balotelli</i>)</b></div>
+  <div class="blue-center">
+    <img src="https://cdn.dealeraccelerate.com/motorcar/1/1067/25851/1920x1440/2008-maserati-quattroporte" width=600>
+  </div>
+
+  <p>O modelo mostrado acima apresenta o único carro nessa página que possui quatro portas. Curiosamente é o mais forte
+    e pesado de todos. Em seu interior ele apresenta toca discos com suporte até 6 discos diferentes e também um
+    telefone próprio. </p>
+
+  <!--Criando uma tabela-->
+</body>
+<div>
+  <p>A tabela abaixo mostra um pouco mais sobre cada um desses veiculos juntando os dados apresentados nas listas
+    apresentadas previamente junto com o peso de cada veículo</p>
+</div>
+
+<div class="tabela">
+  <table border="1">
+    <tr>
+      <th>Modelo</th>
+      <th>Data de lançamento</th>
+      <th>Quantidade de Cavalos (cv)</th>
+      <th>Peso(kg)</th>
+    </tr>
+    <tr>
+      <td>Mazda Miata MX5 (Miata)</td>
+      <td>1994</td>
+      <td>116</td>
+      <td>980</td>
+    </tr>
+    <tr>
+      <td>Mazda Miata MX5 (Miata)</td>
+      <td>2008</td>
+      <td>128</td>
+      <td>1080</td>
+    </tr>
+    <tr>
+      <td>Mini Cooper John Cooper Works </td>
+      <td>2008</td>
+      <td>116</td>
+      <td>1140</td>
+    </tr>
+    <tr>
+      <td>Maserati Quattroporte</td>
+      <td>2008</td>
+      <td>400</td>
+      <td>1.860</td>
+    </tr>
+  </table>
+
+</html>

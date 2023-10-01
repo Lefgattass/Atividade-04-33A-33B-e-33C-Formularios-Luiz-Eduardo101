@@ -1,0 +1,33 @@
+<h1>{{ type }} Ranking maior CV</h1>
+
+<form method="post">
+  {%csrf_token%}
+  <!-- Na ausência de um type no elemento do div bota automaticamente um espaço destinado para texto  -->
+  <div>
+    <label>Marca</label>
+    <input name="marca" value="{{ rcv.marca }}">
+  </div>
+  
+  <div>
+    <label>Modelo</label>
+    <input name="modelo" value="{{ rcv.modelo }}">
+  </div>
+  
+  <div>
+    <label>Ano de lançamento</label>
+    <input type="date" name="ano" value="{{ rcv.ano }}">
+  </div>
+  
+  <div>
+    <label>Potência</label>
+    <input type="number" name="potencia" value="{{ rcv.potencia }}">
+  </div>
+  
+  <div>
+    <label>Insira apenas (cv)</label>
+    <input name="cv" value="{{ rcv.cv }}">
+  </div>
+  
+  <!--Criando botão de submissão-->
+  <input type="submit" value="Registrar">
+</form>

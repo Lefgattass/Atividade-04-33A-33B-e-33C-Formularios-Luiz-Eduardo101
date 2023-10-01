@@ -1,0 +1,28 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+body{
+  font-family: 'Arial',monospace;
+  font-size: 150%;
+}
+
+.blue-center{
+  display: flex;
+  justify-content: center;
+}
+.tabela{
+  font-size: 110%;
+  display: flex;
+  justify-content: center;
+}
+h2{
+  font-family: 'Arial black', monospace;
+}
+h3{
+  font-family: 'Arial black', monospace;
+}
+a{
+  font-weight: bold;
+  font-style: italic;
+}

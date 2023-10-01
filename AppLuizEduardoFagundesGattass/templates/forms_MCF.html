@@ -1,0 +1,26 @@
+<h1>{{ type }} Meu Carro Favorito</h1>
+
+<form method="post">
+  <!-- comando para que a submissão do formulário seja segura -->
+  {%csrf_token%}  
+  <!-- Na ausencia de um type no elemento do div bota automaticamente um espaço destinado para texto  -->
+  <div>
+    <label>Marca</label>
+    <input name="marca" value="{{ mcf.marca }}">
+  </div>
+  
+  <div>
+    <label>Modelo</label>
+    <input name="modelo" value="{{ mcf.modelo }}">
+  </div>
+  
+  <div>
+    <label>Ano de Lançamento</label>
+    <input type="date" name="ano" value="{{ mcf.ano }}">
+  </div>
+  
+  <!--Criando botão de submissão-->
+  <input type="submit" value="Registrar">
+
+</form>
+  
