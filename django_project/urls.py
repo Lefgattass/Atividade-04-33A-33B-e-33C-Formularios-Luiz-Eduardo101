@@ -25,4 +25,4 @@ urlpatterns = [
     path('rcv',views.create_rcv),
     path('rcv/update/<id>',views.update_rcv),
     path('rcv/delete/<id>',views.delete_rcv),
-
+]
