@@ -15,6 +15,11 @@
 </head>
 
 <body>
+  {% if request.user.is_authenticated %}
+    <b>Bem-vindo, {{request.user.username}}</b> <br> 
+    <a href="/users/logout">Sair</a>
+  {% endif %}
+  
   <!--Criando o título da página utilizando o padrão pré definido: 
   <h>(número da versão escolhida)-->
   <h1>Luiz Eduardo Fagundes Gattass</h1>
